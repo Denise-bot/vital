@@ -26,11 +26,11 @@ O **Vital** é um sistema web para gerenciamento de agendamentos e resultados de
 
 1. Clone este repositório:
 
-git clone https://github.com/Denise-bot/vital_care.git
+git clone https://github.com/Denise-bot/vital
 
 2. Acesse a pasta do projeto:
 
-cd vital_care
+cd vital
 
 
 3. Crie e ative um ambiente virtual:

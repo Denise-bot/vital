@@ -1,0 +1,25 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vital</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'geral/css/base.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/geral/img/logo.png" />
+
+    {% block 'head' %} {% endblock %}
+    <nav class="navbar navbar-expand-lg navbar-light">
+    <p> 
+      <div>  
+        <a class="navbar-brand"  href="{% url 'home'%}"><img style="  max-width: 10%;margin-top: 20px; width: 250px;" src="{% static 'geral/img/logo.png' %}"> 
+            <a style="color: white; text-decoration: none; padding: 10px;" href="{% url 'cadastro' %}">CADASTRO</a>
+            <a style="color: white; text-decoration: none; padding: 10px;" href="{% url 'login' %}">LOGIN</a>
+        </div>
+      </p >
+    </nav>
+    {% block 'conteudo' %}{% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
