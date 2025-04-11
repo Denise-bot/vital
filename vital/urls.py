@@ -2,7 +2,7 @@
 URL configuration for vital project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.2/topics/http/urls/
+    https://docs.djangoproject.com/en/5.1/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -19,11 +19,10 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-
-
 urlpatterns = [
-    path('', admin.site.urls),
-    path('usuarios/', include('usuarios.urls')),
+    path('admin/', admin.site.urls),
+    path('', include('usuarios.urls')),
     path('exames/', include('exames.urls')),
+    path('empresarial/', include('empresarial.urls')),
     
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

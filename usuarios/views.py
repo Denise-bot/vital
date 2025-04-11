@@ -5,9 +5,7 @@ from django.contrib.messages import constants
 from django.contrib.auth import authenticate, login, logout
 
 
-def cadastro(request):
-    if request.method == "GET":
-        return render(request, 'cadastro.html')
+# Removed redundant definition of the `cadastro` function
     
 def cadastro(request):
     if request.user.is_authenticated:
@@ -33,14 +31,15 @@ def cadastro(request):
         
         try:
             # Username deve ser único!
-            user = User.objects.create_user(
+            User.objects.create_user(
                 first_name=primeiro_nome,
                 last_name=ultimo_nome,
                 username=username,
                 email=email,
                 password=senha,
             )
-        except:
+        except Exception as e:
+            messages.add_message(request, constants.ERROR, f'Erro ao criar usuário: {e}')
             return redirect('cadastro')
 
 
@@ -61,14 +60,14 @@ def logar(request):
 
         if user:
             login(request, user)
-						# Acontecerá um erro ao redirecionar por enquanto, resolveremos nos próximos passos
+						
             return redirect('/')
         else:
             messages.add_message(request, constants.ERROR, 'Usuario ou senha inválidos')
             return redirect('login')
         
 def home(request):
-    # Se o usuário estiver autenticado, passamos o nome dele para o template
+    
     if request.user.is_authenticated:
         nome = request.user.first_name
         return render(request, 'home.html', {'nome': nome})

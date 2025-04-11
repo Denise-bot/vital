@@ -12,10 +12,19 @@
     {% block 'head' %} {% endblock %}
     <nav class="navbar navbar-expand-lg navbar-light">
     <p> 
-      <div>  
-        <a class="navbar-brand"  href="{% url 'home'%}"><img style="  max-width: 10%;margin-top: 20px; width: 250px;" src="{% static 'geral/img/logo.png' %}"> 
-            <a style="color: white; text-decoration: none; padding: 10px;" href="{% url 'cadastro' %}">CADASTRO</a>
-            <a style="color: white; text-decoration: none; padding: 10px;" href="{% url 'login' %}">LOGIN</a>
+      <div style="display: flex; rigth-content: space-between; width: 100%; padding: 10px; background-color:rgb(22, 49, 57);">  
+        <a class="navbar-brand" style="color: white; text-decoration: none;" href="{% url 'home'%}"><img style="  max-width: 13%;margin-top: 5px; width: 250px;" src="{% static 'geral/img/logo.png' %}">VITAL</a>
+          {% if user.is_authenticated %}
+          <a style="color: white; text-decoration: none; padding: 10px;" href="{% url 'solicitar_exames' %}">Solicitar Exames</a>
+          <a style="color: white; text-decoration: none; padding: 10px;" href="{% url 'gerenciar_exames' %}">Gerenciar Exames</a>
+          <a style="color: white; text-decoration: none; padding: 10px;" href="{% url 'gerenciar_pedidos' %}">Gerenciar Pedidos</a>
+          <a style="color: white; text-decoration: none; padding: 10px;" href="{% url 'gerar_acesso_medico' %}">Gerar acesso Médico</a>
+          <a style="color: white; text-decoration: none; padding: 10px;" href="{% url 'sair' %}">Sair</a>
+          {% else %}
+            <a style="color: white; text-decoration: none; padding: 10px;" href="{% url 'cadastro' %}">Cadastre-se</a>
+            <a style="color: white; text-decoration: none; padding: 10px;" href="{% url 'login' %}">Login</a>
+
+            {% endif %}
         </div>
       </p >
     </nav>
